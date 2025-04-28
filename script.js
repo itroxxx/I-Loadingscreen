@@ -24,14 +24,14 @@ const volumeSlider = document.getElementById('volume-slider');
 const currentSongElement = document.getElementById('current-song');
 const progressBar = document.querySelector('.progress-bar');
 
-// Initialize audio player
+
 function initializePlayer() {
     audioPlayer.src = songs[currentSongIndex].url;
     currentSongElement.textContent = songs[currentSongIndex].title;
     audioPlayer.volume = volumeSlider.value / 100;
 }
 
-// Play/Pause toggle
+
 function togglePlay() {
     if (isPlaying) {
         audioPlayer.pause();
@@ -43,7 +43,7 @@ function togglePlay() {
     isPlaying = !isPlaying;
 }
 
-// Previous song
+
 function playPrevious() {
     currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
     initializePlayer();
@@ -52,7 +52,7 @@ function playPrevious() {
     }
 }
 
-// Next song
+
 function playNext() {
     currentSongIndex = (currentSongIndex + 1) % songs.length;
     initializePlayer();
@@ -61,13 +61,13 @@ function playNext() {
     }
 }
 
-// Update progress bar
+
 function updateProgress() {
     const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
     progressBar.style.width = `${progress}%`;
 }
 
-// Event Listeners
+
 playBtn.addEventListener('click', togglePlay);
 prevBtn.addEventListener('click', playPrevious);
 nextBtn.addEventListener('click', playNext);
@@ -78,7 +78,7 @@ volumeSlider.addEventListener('input', () => {
 audioPlayer.addEventListener('timeupdate', updateProgress);
 audioPlayer.addEventListener('ended', playNext);
 
-// Loading progress simulation
+
 let loadingProgress = 0;
 const loadingInterval = setInterval(() => {
     loadingProgress += Math.random() * 2;
@@ -89,5 +89,5 @@ const loadingInterval = setInterval(() => {
     progressBar.style.width = `${loadingProgress}%`;
 }, 100);
 
-// Initialize the player when the page loads
+
 initializePlayer(); 
